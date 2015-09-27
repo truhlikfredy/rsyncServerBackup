@@ -25,7 +25,7 @@ SHELL_REQUIRED=bash
 
 RSYNC=/usr/bin/rsync           #RSYNC=/opt/bin/rsync
 TR=/usr/bin/tr                 #TR=/opt/bin/coreutils-tr
-FIND=/usr/bin/find             #FIND=/opt/bin/findutils-find        
+FIND=/usr/bin/find             #FIND=/opt/bin/findutils-find
 CP=/bin/cp                     #CP=/opt/bin/coreutils-cp
 MV=/bin/mv                     #MV=/opt/bin/coreutils-mv
 SEQ=/usr/bin/seq               #SEQ=/opt/bin/coreutils-seq
@@ -37,7 +37,7 @@ RM=/bin/rm                     #RM=/opt/bin/coreutils-rm
 TOUCH=/usr/bin/touch           #TOUCH=/opt/bin/coreutils-touch
 LN=/bin/ln                     #LN=/opt/bin/coreutils-ln
 CHMOD=/bin/chmod               #CHMOD=/opt/bin/coreutils-chmod
-RENICE=/usr/bin/renice         #RENICE=/opt/bin/renice    
+RENICE=/usr/bin/renice         #RENICE=/opt/bin/renice
 PS=/bin/ps                     #PS=/opt/bin/procps-ps
 CUT=/usr/bin/cut               #CUT=/opt/bin/coreutils-cut
 TAIL=/usr/bin/tail             #TAIL=/opt/bin/coreutils-tail

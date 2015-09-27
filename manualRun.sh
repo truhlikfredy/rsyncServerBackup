@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEV=/dev/sdb1    #need to give yours backup hdd to spind down properly, probably sdb1 will not work on your setup
-MNT=/mnt/nas
+MNT=/mnt/nas     #this folder needs to exists (it will try to mount the DEV harddrive on it)
 
 
 if [[ $EUID -ne 0 ]]; then
@@ -10,7 +10,7 @@ if [[ $EUID -ne 0 ]]; then
 else
   mount $DEV $MNT
 
-  DRIVES_MOUNTED=`mount | grep /dev/sdb1 | grep /mnt/nas | wc -l`
+  DRIVES_MOUNTED=`mount | grep $DEV | grep $MNT | wc -l`
 
   if [ "$DRIVES_MOUNTED" -ge "1" ]; then
 
@@ -27,7 +27,17 @@ else
     umount $MNT
     hdparm -y $DEV
 
-    echo "Is the harddrive still mounted?:"
-    mount | grep /dev/sdb1 | grep /mnt/nas
+    echo "Is the harddrive ($DEV) still mounted on ($MNT)?:"
+    mount | grep $DEV | grep $MNT
+    DRIVES_MOUNTED=`mount | grep $DEV | grep $MNT | wc -l`
+
+    if [ "$DRIVES_MOUNTED" -eq "0" ]; then
+      echo "Looks the harddrive umounted properly."
+    else
+      echo "Looks still the hardrive is mounted."
+      echo "Opened files on this mount:"
+      lsof | grep $MNT
+    fi
+
   fi
 fi
